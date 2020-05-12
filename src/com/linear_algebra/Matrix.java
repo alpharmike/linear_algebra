@@ -1,16 +1,18 @@
 package com.linear_algebra;
 
-public class Matrix {
+public class Matrix { // Note that a vector has been considered as a matrix, with the specification that the number of columns must be 1, and the number of rows must be any integer n
     private double elements[][];
     private int numOfRows;
     private int numOfColumns;
     private boolean isSquare;
+    private boolean isVector;
 
     public Matrix(double[][] elements, int numOfRows, int numOfColumns) {
         this.elements = elements;
         this.numOfRows = numOfRows;
         this.numOfColumns = numOfColumns;
         this.isSquare = numOfRows == numOfColumns;
+        this.isVector = numOfColumns == 1 && numOfRows >= 1;
     }
 
     public double[][] getElements() {
@@ -43,6 +45,14 @@ public class Matrix {
 
     public void setSquare(boolean square) {
         isSquare = square;
+    }
+
+    public boolean isVector() {
+        return isVector;
+    }
+
+    public void setVector(boolean vector) {
+        isVector = vector;
     }
 
     public void show() {

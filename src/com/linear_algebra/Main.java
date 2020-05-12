@@ -1,5 +1,7 @@
 package com.linear_algebra;
 
+import com.linear_algebra.HW1.ProgramStarter;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -13,10 +15,15 @@ public class Main {
         Matrix inv = MatrixCalculator.getInverseOfMatrix(matrix);
 //        inv.show();
 //        MatrixCalculator.multiplyMatrices(inv, rhsMatrix).show();
-        EquationSolver.getSolution(matrix, rhsMatrix);
+//        matrix.show();
+//        EquationSolver.solveByCramerRule(matrix, rhsMatrix).show();
 //        MatrixCalculator.getInverseOfMatrix(matrix).show();
 //        Matrix newMat = MatrixCalculator.eliminateMatrix(matrix, 1, 1);
 //        System.out.println(newMat.getElements()[0][0]);
 
+//        InputReader inputReader = new InputReader();
+//        int a = inputReader.readDimension();
+//      inputReader.readMatrixInput(3);
+        ProgramStarter.run();
     }
 }
