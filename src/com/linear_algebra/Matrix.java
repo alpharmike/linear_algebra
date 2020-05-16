@@ -59,7 +59,7 @@ public class Matrix { // Note that a vector has been considered as a matrix, wit
         int rowIndex, colIndex;
         for (rowIndex = 0; rowIndex < this.numOfRows; ++rowIndex) {
             for (colIndex = 0; colIndex < this.numOfColumns; ++colIndex) {
-                System.out.println(this.getElements()[rowIndex][colIndex] + " ");
+                System.out.printf("%g ", this.getElements()[rowIndex][colIndex]);
             }
             System.out.println("\n");
         }

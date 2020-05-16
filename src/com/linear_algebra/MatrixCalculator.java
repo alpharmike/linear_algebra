@@ -5,11 +5,11 @@ public class MatrixCalculator {
         if (!matrix.isSquare()) {
             return Double.NEGATIVE_INFINITY;
         } else {
-            return calcDeterminantRec(matrix, 0);
+            return calcDeterminantRec(matrix);
         }
     }
 
-    private static double calcDeterminantRec(Matrix matrix, double initialValue) {
+    private static double calcDeterminantRec(Matrix matrix) {
         if (matrix.getNumOfRows() == 1 && matrix.getNumOfColumns() == 1) {
             return matrix.getElements()[0][0];
         }
@@ -17,10 +17,12 @@ public class MatrixCalculator {
             return matrix.getElements()[0][0] * matrix.getElements()[1][1] - matrix.getElements()[0][1] * matrix.getElements()[1][0];
         }
 
+        double initialValue = 0.0;
+
         int i, j;
         for (i = 0; i < matrix.getNumOfColumns(); ++i) {
             Matrix modMat = eliminateMatrix(matrix, 1, i + 1);
-            initialValue += Math.pow(-1, i) * matrix.getElements()[0][i] * calcDeterminantRec(modMat, initialValue);
+            initialValue += Math.pow(-1, i) * matrix.getElements()[0][i] * calcDeterminantRec(modMat);
 
         }
         return initialValue;
@@ -56,7 +58,7 @@ public class MatrixCalculator {
         double[][] coFactorElements = new double[matrix.getNumOfRows()][matrix.getNumOfColumns()];
         for (rowIndex = 0; rowIndex < matrix.getNumOfRows(); ++rowIndex) {
             for (colIndex = 0; colIndex < matrix.getNumOfColumns(); ++colIndex) {
-                coFactorElements[rowIndex][colIndex] = Math.pow(-1, rowIndex + colIndex) * calcDeterminantRec(eliminateMatrix(matrix, rowIndex + 1, colIndex + 1), 0);
+                coFactorElements[rowIndex][colIndex] = Math.pow(-1, rowIndex + colIndex) * calcDeterminantRec(eliminateMatrix(matrix, rowIndex + 1, colIndex + 1));
             }
         }
         Matrix coFactorMatrix = new Matrix(coFactorElements, matrix.getNumOfRows(), matrix.getNumOfColumns());
@@ -152,7 +154,7 @@ public class MatrixCalculator {
         double sumOfSquares = 0.0;
         int rowIndex;
         for (rowIndex = 0; rowIndex < matrix.getNumOfRows(); ++rowIndex) {
-            sumOfSquares += matrix.getElements()[rowIndex][0];
+            sumOfSquares += Math.pow(matrix.getElements()[rowIndex][0], 2);
         }
         double norm = Math.sqrt(sumOfSquares);
         return norm;

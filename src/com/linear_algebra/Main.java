@@ -6,13 +6,14 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        double elements[][] = {{3, 0, 2}, {2, 2, 2}, {1, 1, 0}};
-        double elements1[][] = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
-        double rhs[][] = {{1}, {2}, {3}};
-        Matrix matrix = new Matrix(elements, 3, 3);
-        Matrix matrix2 = new Matrix(elements1, 3, 3);
-        Matrix rhsMatrix = new Matrix(rhs, 3, 1);
-        Matrix inv = MatrixCalculator.getInverseOfMatrix(matrix);
+//        double elements[][] = {{3, 0, 2, 1, 0}, {2, 2, 2, 1, 5}, {1, 1, 0, 0, 6}, {2, 3, 1, 1, 2}, {4, 5, 2, 5, 6}};
+//        double elements1[][] = {{3, 15, 2, 4}, {2, 2, 2, 5}, {1, 5, 6, 2}, {7, 2, 6, 1}};
+//        double rhs[][] = {{1}, {2}, {3}};
+//        Matrix matrix = new Matrix(elements, 5, 5);
+//        System.out.println(MatrixCalculator.getDeterminant(matrix));
+//        Matrix matrix2 = new Matrix(elements1, 3, 3);
+//        Matrix rhsMatrix = new Matrix(rhs, 3, 1);
+//        Matrix inv = MatrixCalculator.getInverseOfMatrix(matrix);
 //        inv.show();
 //        MatrixCalculator.multiplyMatrices(inv, rhsMatrix).show();
 //        matrix.show();
