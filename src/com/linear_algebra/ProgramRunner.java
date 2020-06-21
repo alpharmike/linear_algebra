@@ -1,14 +1,14 @@
-package com.linear_algebra.HW1;
+package com.linear_algebra;
 
 import com.linear_algebra.EquationSolver;
 import com.linear_algebra.InputReader;
 import com.linear_algebra.Matrix;
 import com.linear_algebra.MatrixCalculator;
 
-public class ProgramStarter {
+public class ProgramRunner {
     static InputReader inputReader;
 
-    public ProgramStarter() {
+    public ProgramRunner() {
         inputReader = new InputReader();
     }
 
@@ -16,10 +16,12 @@ public class ProgramStarter {
         inputReader = new InputReader();
         System.out.println(inputReader);
         int caseNumber = 1;
+        double normResidualA = Double.POSITIVE_INFINITY;
+        double normResidualH = Double.POSITIVE_INFINITY;
 
         while (true) {
             int dimension = inputReader.readDimension();
-            System.out.println("dim" + dimension);
+            System.out.println("Dimension of Input: " + dimension + " * " + dimension);
             if (dimension == 0) {
                 System.out.println("end");
                 break;
@@ -49,9 +51,8 @@ public class ProgramStarter {
                 System.out.println("Residual A(b - Ax):");
                 residualA.show();
 
-                double normResidualA = MatrixCalculator.calculateNorm(residualA);
+                normResidualA = MatrixCalculator.calculateNorm(residualA);
                 System.out.println("Norm of Residual A:" + normResidualA);
-
             }
 
             System.out.println("-------------------------------------");
@@ -70,12 +71,24 @@ public class ProgramStarter {
                 System.out.println("Residual H(b - Hx):");
                 residualH.show();
 
-                double normResidualH = MatrixCalculator.calculateNorm(residualH);
+                normResidualH = MatrixCalculator.calculateNorm(residualH);
                 System.out.println("Norm of Residual H:" + normResidualH);
             }
 
-            System.out.println("-------------------------------------");
+            if (normResidualA != Double.POSITIVE_INFINITY && normResidualH != Double.POSITIVE_INFINITY) {
+                if (normResidualA > normResidualH) {
+                    System.out.println("||b - Ax|| > ||b - Hx||");
+                } else if (normResidualA < normResidualH) {
+                    System.out.println("||b - Ax|| < ||b - Hx||");
+                } else {
+                    System.out.println("||b - Ax|| = ||b - Hx||");
+                }
+            } else {
+                System.out.println("Comparison is not possible because one of the equations could not be solved!");
+            }
 
+            System.out.println("-------------------------------------");
+            ++caseNumber;
         }
 
     }

@@ -61,7 +61,7 @@ public class Matrix { // Note that a vector has been considered as a matrix, wit
             for (colIndex = 0; colIndex < this.numOfColumns; ++colIndex) {
                 System.out.printf("%g ", this.getElements()[rowIndex][colIndex]);
             }
-            System.out.println("\n");
+            System.out.printf("\n");
         }
     }
 }
